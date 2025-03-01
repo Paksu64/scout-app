@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/webfonts/Geist[wght].woff2') format('woff2');  /* sikici offff */ /* AHHHH AHMETT */ 
+}
+
+* {
+    font-family: 'Geist', sans-serif;
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    text-align: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly black background */
+}
+
+button {
+    background-color: #9b1d20;
+    min-width: 20vw;
+    margin-bottom: 2vh;
+    color: white;
+    min-height: 3vh;
+    border: solid 4px transparent;
+    border-radius: 10px;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+button:hover {
+    border: 4px solid rgb(0, 0, 0);
+}

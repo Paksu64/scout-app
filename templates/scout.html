@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/scout.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+
+<body>
+  <main>
+    <nav class="bg-red-800 fixed w-full z-20 top-0">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="{{ url_for('static', filename='assets/logo.png') }}" class="h-8" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">ScoutApp</span>
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <button
+            data-collapse-toggle="navbar-sticky"
+            type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-white dark:focus:ring-gray-600"
+            aria-controls="navbar-sticky"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="items-center justify-center hidden w-full md:flex md:w-auto md:order-1"
+          id="navbar-sticky"
+        >
+          <ul
+            class="flex flex-col md:flex-row justify-center items-center w-full md:space-x-8 rtl:space-x-reverse p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"
+            style="margin-right: 140px;"
+          >
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-white md:p-0"
+                aria-current="page"
+                >Scout</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('statistics') }}"
+                class="block py-2 px-3 text-white rounded-sm md:p-0">
+                Statistics</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="allianceSelection">
+      <h3 id="title">Alliance Selection</h3>
+      <br/>
+      <form>
+        <label>
+          <input type="radio" name="alliance" value="blue" /> Blue
+        </label>
+        <label>
+          <input type="radio" name="alliance" value="red" /> Red
+        </label>
+        <br/><br/>
+      </form>
+      <form>
+        <label>
+          <input type="radio" name="team" value="1" /> 1
+        </label>
+        <label>
+          <input type="radio" name="team" value="2" /> 2
+        </label>
+        <label>
+          <input type="radio" name="team" value="3" /> 3
+        </label>
+      </form>
+    </div>
+
+    <br/>
+
+    <div class="teamNumber">
+      <h3 id="title">Team Number</h3>
+      <input type="number" id="teamNumber" />
+      <br/><br/>
+      <h3 id="title">Scout Name</h3>
+      <input type="text" id="scoutName" />
+      <div>
+        <br />
+        <div id="myBtnContainer" style="text-align: center;">
+          <button onclick="filterSelection('auto')" type="button" id="filterButton">Autonomous</button>
+          <button onclick="filterSelection('teleop')" type="button" id="filterButton">Tele-Op</button>
+        </div>
+
+        <div class="filterDiv auto" style="display: block;">
+          <h3 id="titleFilter" style="font-size: 1.8rem; font-weight: bold;">Autonomous</h3>
+          <div>
+            <form>
+              <table class="center-table">
+                <tr>
+                  <td>
+                    <p class="label">Scored L1</p>
+                    <button id="autoDReefL1"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL1" value="0" min="0" />
+                    <button id="autoIReefL1"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L1</p>
+                    <button id="autoDReefL1miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL1miss" value="0" min="0" />
+                    <button id="autoIReefL1miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="label">Scored L2</p>
+                    <button id="autoDReefL2"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL2" value="0" min="0" />
+                    <button id="autoIReefL2"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L2</p>
+                    <button id="autoDReefL2miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL2miss" value="0" min="0" />
+                    <button id="autoIReefL2miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="label">Scored L3</p>
+                    <button id="autoDReefL3"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL3" value="0" min="0" />
+                    <button id="autoIReefL3"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L3</p>
+                    <button id="autoDReefL3miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL3miss" value="0" min="0" />
+                    <button id="autoIReefL3miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="label">Scored L4</p>
+                    <button id="autoDReefL4"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL4" value="0" min="0" />
+                    <button id="autoIReefL4"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L4</p>
+                    <button id="autoDReefL4miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoCounterReefL4miss" value="0" min="0" />
+                    <button id="autoIReefL4miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="label">Processed Algea</p>
+                    <button id="autoProcDAlgea"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoProcCounterAlgea" value="0" min="0" />
+                    <button id="autoProcIAlgea"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Shooted to Barge Algea</p>
+                    <button id="autoBargeDAlgea"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="autoBargeCounterAlgea" value="0" min="0" />
+                    <button id="autoBargeIAlgea"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+          <div class="comments">
+            <textarea id="auto_comment" placeholder="Comments..."></textarea>
+          </div>
+        </div>
+
+        <div class="filterDiv teleop" style="display: none;">
+          <h3 id="titleFilter" style="font-size: 1.8rem; font-weight: bold;">Teleop</h3>
+          <div>
+            <form>
+              <table class="center-table">
+                <tr>
+                  <td>
+                    <p class="label">Scored L1</p>
+                    <button id="teleopDReefL1"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL1" value="0" min="0" />
+                    <button id="teleopIReefL1"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L1</p>
+                    <button id="teleopDReefL1miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL1miss" value="0" min="0" />
+                    <button id="teleopIReefL1miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="label">Scored L2</p>
+                    <button id="teleopDReefL2"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL2" value="0" min="0" />
+                    <button id="teleopIReefL2"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L2</p>
+                    <button id="teleopDReefL2miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL2miss" value="0" min="0" />
+                    <button id="teleopIReefL2miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="label">Scored L3</p>
+                    <button id="teleopDReefL3"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL3" value="0" min="0" />
+                    <button id="teleopIReefL3"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L3</p>
+                    <button id="teleopDReefL3miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL3miss" value="0" min="0" />
+                    <button id="teleopIReefL3miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <p class="label">Scored L4</p>
+                    <button id="teleopDReefL4"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL4" value="0" min="0" />
+                    <button id="teleopIReefL4"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Missed L4</p>
+                    <button id="teleopDReefL4miss"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopCounterReefL4miss" value="0" min="0" />
+                    <button id="teleopIReefL4miss"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="label">Processed Algea</p>
+                    <button id="teleopProcDAlgea"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopProcCounterAlgea" value="0" min="0" />
+                    <button id="teleopProcIAlgea"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                  <td>
+                    <p class="label">Shooted to Barge Algea</p>
+                    <button id="teleopBargeDAlgea"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" id="teleopBargeCounterAlgea" value="0" min="0" />
+                    <button id="teleopBargeIAlgea"><i class="fa-solid fa-plus"></i></button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+            <br /><br />
+            <form>
+              <label>
+                <input type="radio" name="climb" value="deep" /> Deep Cage
+              </label>
+              <label>
+                <input type="radio" name="climb" value="shallow" /> Shallow Cage
+              </label>
+              <label>
+                <input type="radio" name="climb" value="none"/> None
+              </label>
+            </form><br/>
+
+            <form>
+              <label>
+                <input type="radio"/> Tank Drive
+              </label>
+              <label>
+                <input type="radio"/> Swerve Drive
+              </label>
+            </form><br/>
+
+            <label for="options">Attack Point:</label>
+            <select id="options" name="options">
+              <option value="option1">1</option>
+              <option value="option2">2</option>
+              <option value="option3">3</option>
+              <option value="option2">4</option>
+              <option value="option3">5</option>
+            </select><br /><br />
+
+            <label for="options">Defence Point:</label>
+            <select id="options" name="options">
+              <option value="option1">1</option>
+              <option value="option2">2</option>
+              <option value="option3">3</option>
+              <option value="option3">4</option>
+              <option value="option3">5</option>
+            </select><br /><br />
+
+            <div class="comments">
+              <textarea id="teleop_comment" placeholder="Comments..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="submit"
+          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+        >
+          Submit
+        </button>
+
+        <script src="{{ url_for('static', filename='js/filter.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/filterScout.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

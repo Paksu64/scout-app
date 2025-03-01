@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/webfonts/Geist[wght].woff2') format('woff2');
+}
+
+* {
+    font-family: 'Geist', sans-serif;
+    box-sizing: border-box;
+    color: #b0b0b0;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.allianceSelection {
+    margin-top: 15vh;
+    text-align: center;
+    color: white;
+}
+
+.teamNumber {
+    text-align: center;
+    margin-top: 20px; /* Team number ve scout name arasına mesafe ekledim */
+}
+
+#teamNumber, #scoutName {
+    padding: 10px;
+    margin-top: 10px;
+    width: 200px; /* Genişliği artırdım */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#myBtnContainer {
+    text-align: center;
+    margin-top: 30px; /* Butonlar arasına mesafe ekledim */
+}
+
+button {
+    margin: 5px; /* Butonlar arasına mesafe ekledim */
+}
+
+#filterButton {
+    background-color: #9b1d20;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Geçiş efekti ekleyerek daha pürüzsüz bir değişim sağlar */
+}
+
+#filterButton:hover {
+    background-color: #7a1417; /* Hover'da koyu kırmızı ton */
+    transform: scale(1.1); /* Butonu biraz büyütür */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
+}
+
+.center-table {
+    margin: 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 5px; /* Hücrelerin arasındaki boşluğu azaltıyoruz */
+    text-align: center;
+}
+
+button {
+    margin: 2px; /* Butonlar arasındaki boşluğu azaltıyoruz */
+}
+
+#comments {
+    resize: none;
+    width: 300px;
+    height: 100px;
+}
+
+#submit {
+    background-color: #9b1d20;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+#submit:hover {
+    background-color: #7e181a;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+#submit:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#submit::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0) 10%, transparent 60%);
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+#submit:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
