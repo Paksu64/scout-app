@@ -1,11 +1,11 @@
 const countersConfig = [
   // AUTONOMOUS
-  { field: 'autoProcCounterAlgea', weight: 0.6, decreaseBtnId: 'autoProcDAlgea', increaseBtnId: 'autoProcIAlgea' },
-  { field: 'autoBargeCounterAlgea', weight: 1.31, decreaseBtnId: 'autoBargeDAlgea', increaseBtnId: 'autoBargeIAlgea' },
-  { field: 'autoCounterReefL1', weight: 0.5, decreaseBtnId: 'autoDReefL1', increaseBtnId: 'autoIReefL1' },
-  { field: 'autoCounterReefL2', weight: 1.0, decreaseBtnId: 'autoDReefL2', increaseBtnId: 'autoIReefL2' },
-  { field: 'autoCounterReefL3', weight: 1.5, decreaseBtnId: 'autoDReefL3', increaseBtnId: 'autoIReefL3' },
-  { field: 'autoCounterReefL4', weight: 2.0, decreaseBtnId: 'autoDReefL4', increaseBtnId: 'autoIReefL4' },
+  { field: 'autoProcCounterAlgea', weight: 6.0, decreaseBtnId: 'autoProcDAlgea', increaseBtnId: 'autoProcIAlgea' },
+  { field: 'autoBargeCounterAlgea', weight: 4.0, decreaseBtnId: 'autoBargeDAlgea', increaseBtnId: 'autoBargeIAlgea' },
+  { field: 'autoCounterReefL1', weight: 3.0, decreaseBtnId: 'autoDReefL1', increaseBtnId: 'autoIReefL1' },
+  { field: 'autoCounterReefL2', weight: 4.0, decreaseBtnId: 'autoDReefL2', increaseBtnId: 'autoIReefL2' },
+  { field: 'autoCounterReefL3', weight: 6.0, decreaseBtnId: 'autoDReefL3', increaseBtnId: 'autoIReefL3' },
+  { field: 'autoCounterReefL4', weight: 7.0, decreaseBtnId: 'autoDReefL4', increaseBtnId: 'autoIReefL4' },
 
   { field: 'autoCounterReefL1miss', weight: -0.5, decreaseBtnId: 'autoDReefL1miss', increaseBtnId: 'autoIReefL1miss' },
   { field: 'autoCounterReefL2miss', weight: -1.0, decreaseBtnId: 'autoDReefL2miss', increaseBtnId: 'autoIReefL2miss' },
@@ -13,12 +13,12 @@ const countersConfig = [
   { field: 'autoCounterReefL4miss', weight: -2.0, decreaseBtnId: 'autoDReefL4miss', increaseBtnId: 'autoIReefL4miss' },
 
   // TELEOP
-  { field: 'teleopProcCounterAlgea', weight: 0.6, decreaseBtnId: 'teleopProcDAlgea', increaseBtnId: 'teleopProcIAlgea' },
-  { field: 'teleopBargeCounterAlgea', weight: 1.31, decreaseBtnId: 'teleopBargeDAlgea', increaseBtnId: 'teleopBargeIAlgea' },
-  { field: 'teleopCounterReefL1', weight: 0.5, decreaseBtnId: 'teleopDReefL1', increaseBtnId: 'teleopIReefL1' },
-  { field: 'teleopCounterReefL2', weight: 1.0, decreaseBtnId: 'teleopDReefL2', increaseBtnId: 'teleopIReefL2' },
-  { field: 'teleopCounterReefL3', weight: 1.5, decreaseBtnId: 'teleopDReefL3', increaseBtnId: 'teleopIReefL3' },
-  { field: 'teleopCounterReefL4', weight: 2.0, decreaseBtnId: 'teleopDReefL4', increaseBtnId: 'teleopIReefL4' },
+  { field: 'teleopProcCounterAlgea', weight: 6.0, decreaseBtnId: 'teleopProcDAlgea', increaseBtnId: 'teleopProcIAlgea' },
+  { field: 'teleopBargeCounterAlgea', weight: 4.0, decreaseBtnId: 'teleopBargeDAlgea', increaseBtnId: 'teleopBargeIAlgea' },
+  { field: 'teleopCounterReefL1', weight: 2.0, decreaseBtnId: 'teleopDReefL1', increaseBtnId: 'teleopIReefL1' },
+  { field: 'teleopCounterReefL2', weight: 3.0, decreaseBtnId: 'teleopDReefL2', increaseBtnId: 'teleopIReefL2' },
+  { field: 'teleopCounterReefL3', weight: 4.0, decreaseBtnId: 'teleopDReefL3', increaseBtnId: 'teleopIReefL3' },
+  { field: 'teleopCounterReefL4', weight: 5.0, decreaseBtnId: 'teleopDReefL4', increaseBtnId: 'teleopIReefL4' },
 
   { field: 'teleopCounterReefL1miss', weight: -0.5, decreaseBtnId: 'teleopDReefL1miss', increaseBtnId: 'teleopIReefL1miss' },
   { field: 'teleopCounterReefL2miss', weight: -1.0, decreaseBtnId: 'teleopDReefL2miss', increaseBtnId: 'teleopIReefL2miss' },
@@ -26,9 +26,9 @@ const countersConfig = [
   { field: 'teleopCounterReefL4miss', weight: -2.0, decreaseBtnId: 'teleopDReefL4miss', increaseBtnId: 'teleopIReefL4miss' },
 ];
 const cageWeights = {
-  none: 0.0,
-  deep: 1.0,
-  shallow: 2.0
+  none: 2.0,
+  deep: 12.0,
+  shallow: 6.0
 };
 
 countersConfig.forEach(config => {

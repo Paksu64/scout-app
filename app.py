@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_file
 import pandas as pd
 import csv
 from totalPoint_rank import rank_totalpoint
@@ -40,12 +40,9 @@ def add_input():
 
         return jsonify({"message": "Inputs successfully received", "inputs": user_inputs}), 200
 
-@app.route("/load_rankings", methods=["POST"])
-def load_rankings():
-    file_path = "ranked_profiles.csv"
-    data = pd.read_csv(file_path)
-    rankings = data.to_dict(orient="records")
-    return jsonify({"status": "success", "rankings": rankings})
+@app.route('/load_rankings')
+def rankings():
+    return send_file('ranked_profiles.csv', mimetype='text/csv', as_attachment=False)
 
 @app.route('/data_view', methods=['GET'])
 def get_inputs():

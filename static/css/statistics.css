@@ -68,11 +68,18 @@ button {
 
 table {
     width: 100%;
+    border-collapse: collapse;
 }
 
 td {
     padding: 5px;
     text-align: center;
+}
+
+#ranking_table, #ranking_table th, #ranking_table td {
+    border: 1px solid #9b1d20;
+    width: 30%;
+    margin: 0 auto;
 }
 
 button {
