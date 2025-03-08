@@ -41,7 +41,7 @@ def add_input():
 
 @app.route('/load_rankings')
 def rankings():
-    return send_file(RANKED_CSV, mimetype='text/csv', as_attachment=False)
+    return send_file(SCOUT_CSV, mimetype='text/csv', as_attachment=False)
 
 @app.route('/data_view', methods=['GET'])
 def get_inputs():

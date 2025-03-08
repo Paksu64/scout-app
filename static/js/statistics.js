@@ -8,60 +8,42 @@ fetch('/load_rankings')
   .then(data => {
     const table = document.getElementById('ranking_table');
     const rows = data.split('\n').filter(row => row.trim() !== '');
-    rows.shift();
+    if (rows.length === 0) return;
 
-    const parsedRows = rows.map(row => {
-      const cols = row.split(',').map(col => col.trim());
-      const teamNumber = parseInt(cols[0]);
-      const climbVal = parseFloat(cols[cols.length - 2]);
-      let climb;
-      if (climbVal === 2) {
-        climb = "Barge Zone Park";
-      } else if (climbVal === 6) {
-        climb = "Shallow Climb";
-      } else if (climbVal === 12) {
-        climb = "Deep Climb";
-      } else {
-        climb = "None";
-      }
-      const totalPoints = parseFloat(cols[cols.length - 1]);
-      return { teamNumber, climb, totalPoints };
-    });
+    // Extract the header row and split into columns
+    let headerCols = rows.shift().split(',').map(col => col.trim());
 
-    parsedRows.sort((a, b) => b.totalPoints - a.totalPoints);
+    // Determine indices to include (exclude any header that includes "miss")
+    const includeIndices = headerCols
+      .map((col, idx) => (col.toLowerCase().includes('miss') ? -1 : idx))
+      .filter(idx => idx !== -1);
 
+    // Build and append the filtered header row
     const headerRow = document.createElement('tr');
-    headerRow.classList.add('scoreboard');
-
-    const th1 = document.createElement('th');
-    th1.textContent = 'Team Number';
-    headerRow.appendChild(th1);
-
-    const th2 = document.createElement('th');
-    th2.textContent = 'Climb';
-    headerRow.appendChild(th2);
-
-    const th3 = document.createElement('th');
-    th3.textContent = 'Total Points';
-    headerRow.appendChild(th3);
-
+    includeIndices.forEach(i => {
+      const th = document.createElement('th');
+      th.textContent = headerCols[i];
+      headerRow.appendChild(th);
+    });
     table.appendChild(headerRow);
 
-    parsedRows.forEach(({ teamNumber, climb, totalPoints }) => {
+    // Parse the remaining rows
+    const parsedRows = rows.map(row => row.split(',').map(col => col.trim()));
+
+    // Assume totalPoints is in the last column of the original CSV
+    const totalPointsIndex = headerCols.length - 1;
+
+    // Sort rows by totalPoints in descending order
+    parsedRows.sort((a, b) => parseFloat(b[totalPointsIndex]) - parseFloat(a[totalPointsIndex]));
+
+    // Populate the table with filtered cells
+    parsedRows.forEach(cols => {
       const tr = document.createElement('tr');
-
-      const td1 = document.createElement('td');
-      td1.textContent = teamNumber;
-      tr.appendChild(td1);
-
-      const td2 = document.createElement('td');
-      td2.textContent = climb;
-      tr.appendChild(td2);
-
-      const td3 = document.createElement('td');
-      td3.textContent = totalPoints.toFixed(2);
-      tr.appendChild(td3);
-
+      includeIndices.forEach(i => {
+        const td = document.createElement('td');
+        td.textContent = cols[i];
+        tr.appendChild(td);
+      });
       table.appendChild(tr);
     });
   })
