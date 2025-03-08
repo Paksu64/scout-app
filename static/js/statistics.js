@@ -11,7 +11,7 @@ fetch('/load_rankings')
     if (rows.length === 0) return;
 
     // Extract the header row and split into columns
-    let headerCols = rows.shift().split(',').map(col => col.trim());
+    let dheaderCols = rows.shift().split(',').map(col => col.trim());
 
     // Determine indices to include (exclude any header that includes "miss")
     const includeIndices = headerCols
